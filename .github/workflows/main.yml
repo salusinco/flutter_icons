@@ -12,6 +12,9 @@ jobs:
     -
       name: 'Checkout'
       uses: actions/checkout@main
+    -
+      name: Build with bun
+      uses: oven-sh/setup-bun@v1
     - run: bun i
     - run: time(cd build && bun run build)
     - 
