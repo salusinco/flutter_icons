@@ -16,7 +16,7 @@ jobs:
       name: Build with bun
       uses: oven-sh/setup-bun@v1
     - run: time(cd build && bun i)
-    - run: time(cd build && bun run build)
+    - run: time(cd build && bun start)
     - 
       name: 'Publishing to pub'
       uses: k-paxian/dart-package-publisher@master
