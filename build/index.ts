@@ -44,7 +44,7 @@ configs.icons.forEach(group => {
 // THIS FILE IS AUTO GENERATED
 library flutter_icons;
 
-import 'package:flutter_icons/gen_icon.dart';
+import 'package:ultimate_flutter_icons/gen_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

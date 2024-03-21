@@ -1,3 +1,8 @@
-## 0.0.1
+## 1.0.0
+First publish
 
-* TODO: Describe initial release.
+## 1.0.1
+Fixed error about the icons folder not being published!
+
+## 1.0.2
+Added a .pubignore file

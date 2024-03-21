@@ -1,7 +1,8 @@
-name: flutter_icons
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+name: ultimate_flutter_icons
+description: "All the icons you need for your flutter app"
+version: 1.0.2
+homepage: https://github.com/salusinco/flutter_icons
+repository: https://github.com/salusinco/flutter_icons
 
 environment:
   sdk: '>=3.3.1 <4.0.0'

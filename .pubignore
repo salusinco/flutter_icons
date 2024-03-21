@@ -27,7 +27,4 @@ migrate_working_dir/
 **/doc/api/
 .dart_tool/
 
-# Own ignores
-# lib/icons
-lib/flutter_icons.dart
-lib/icons
+build/
