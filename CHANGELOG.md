@@ -9,3 +9,6 @@ Added a .pubignore file
 
 ## 1.0.3
 Completed the readme
+
+## 1.0.4
+Added dynamic HTML string creation from Map/Object
