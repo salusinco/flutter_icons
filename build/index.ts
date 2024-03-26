@@ -35,18 +35,17 @@ configs.icons.forEach(group => {
     
     let content = fs.readFileSync(`${temp_path}/react_icons/${group}/index.js`, 'utf8');
     content = content.replace(`// THIS FILE IS AUTO GENERATED`, '').replace('var GenIcon = require(\'../lib\').GenIcon', '');
-    content = content.replace(/module\.exports\.[a-z0-9]+ = function ([a-z0-9]+) \(props\)/gi, 'static SvgPicture $1({double size = 16, Color color = Colors.black})');  
-    content = content.replace(/GenIcon\(\{/gi, 'genIcon(({');
-    content = content.replace(/\]\}\)\(props\)/gi, ']}), size: size, color: color)');
-    content = content.replace(/\};/gi, '}');
+    content = content.replace(/module\.exports\.[a-z0-9]+ = function ([a-z0-9]+) \(props\).*/gi, 'static FIconObject $1 = ');  
+    // FIconObject.parseJSON(el)
+    content = content.replace(/GenIcon\(\{/gi, 'FIconObject.parseJSON(({');
+    content = content.replace(/\]\}\)\(props\)/gi, ']}))');
+    content = content.replace(/\};| return /gi, '');
 
     fs.writeFileSync(`${bin_path}/icons/${group}.dart`, `
 // THIS FILE IS AUTO GENERATED
 library flutter_icons;
 
-import 'package:ultimate_flutter_icons/gen_icon.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ultimate_flutter_icons/ficon.dart';
 
 class ${group.toUpperCase()} {
 ${content.trim().replace(/^/gim, '\t')}
@@ -60,6 +59,8 @@ ${content.trim().replace(/^/gim, '\t')}
 fs.writeFileSync(`${bin_path}/flutter_icons.dart`, `
 // THIS FILE IS AUTO GENERATED
 library flutter_icons;
+
+export 'package:ultimate_flutter_icons/ficon.dart';
 
 ${export_content}
 `.trim());

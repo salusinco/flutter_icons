@@ -1,6 +1,8 @@
 // THIS FILE IS AUTO GENERATED
 library flutter_icons;
 
+export 'package:ultimate_flutter_icons/ficon.dart';
+
 export 'icons/ai.dart';
 export 'icons/bs.dart';
 export 'icons/bi.dart';

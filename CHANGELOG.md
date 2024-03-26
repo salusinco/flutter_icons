@@ -12,3 +12,7 @@ Completed the readme
 
 ## 1.0.4
 Added dynamic HTML string creation from Map/Object
+
+## 1.2.0
+Changed all icons to an object instead of a widget.
+Therefor also created the FIcon widget, which will display the icon.
