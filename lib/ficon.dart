@@ -24,19 +24,9 @@ class FIcon extends StatelessWidget {
 }
 
 class FIconObject {
-  String tag;
-  Map<String, String> attr;
-  List<FIconObject> child;
+  final String tag;
+  final Map<String, String> attr;
+  final List<FIconObject> child;
 
-  FIconObject(this.tag, this.attr, this.child);
-
-  static FIconObject parseJSON(Map<String, dynamic>? json) {
-    return FIconObject(
-      json?['tag'] ?? '',
-      json?['attr'] ?? {},
-      (json?['child'] ?? [])
-          .map<FIconObject>((e) => FIconObject.parseJSON(e))
-          .toList(),
-    );
-  }
+  const FIconObject(this.tag, this.attr, this.child);
 }

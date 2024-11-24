@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import configs from './build.config.json';
+import generateFIObject from './generate_fiobject';
 
 const dist_path = path.resolve(__dirname, configs.dist_path);
 const bin_path = path.resolve(__dirname, configs.bin_path);
@@ -34,24 +35,19 @@ configs.icons.forEach(group => {
     console.log(` > Installing ${group}...`);
     
     let content = fs.readFileSync(`${temp_path}/react_icons/${group}/index.js`, 'utf8');
-    content = content.replace(`// THIS FILE IS AUTO GENERATED`, '').replace('var GenIcon = require(\'../lib\').GenIcon', '');
-    content = content.replace(/module\.exports\.[a-z0-9]+ = function ([a-z0-9]+) \(props\).*/gi, 'static const FIconObject $1 = ');  
-    // FIconObject.parseJSON(el)
-    content = content.replace(/GenIcon\(\{/gi, 'FIconObject.parseJSON(({');
-    content = content.replace(/\]\}\)\(props\)/gi, ']}))');
-    content = content.replace(/\};| return /gi, '');
-
-    fs.writeFileSync(`${bin_path}/icons/${group}.dart`, `
-// THIS FILE IS AUTO GENERATED
+    let file = `// THIS FILE IS AUTO GENERATED
 library flutter_icons;
 
 import 'package:ultimate_flutter_icons/ficon.dart';
 
 class ${group.toUpperCase()} {
-${content.trim().replace(/^/gim, '\t')}
-}
-    `.trim());
+`;
 
+    for (const icon of [...content.matchAll(/function ([a-z]+) ?\([a-z]*\) \{\n? *return GenIcon\((\{.*\})\)/gi)])
+        file += `\tstatic const FIconObject ${icon[1]} = ${generateFIObject(JSON.parse(icon[2]))};\n`;
+    file += '}';
+
+    fs.writeFileSync(`${bin_path}/icons/${group}.dart`, file.trim());
     export_content += `export 'icons/${group}.dart';\n`;
 
     console.log(` > Done! `)
