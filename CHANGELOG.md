@@ -16,3 +16,6 @@ Added dynamic HTML string creation from Map/Object
 ## 1.2.0
 Changed all icons to an object instead of a widget.
 Therefor also created the FIcon widget, which will display the icon.
+
+## 1.3.0
+Made all icons to const, for use constant properties.

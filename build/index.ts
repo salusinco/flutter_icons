@@ -35,7 +35,7 @@ configs.icons.forEach(group => {
     
     let content = fs.readFileSync(`${temp_path}/react_icons/${group}/index.js`, 'utf8');
     content = content.replace(`// THIS FILE IS AUTO GENERATED`, '').replace('var GenIcon = require(\'../lib\').GenIcon', '');
-    content = content.replace(/module\.exports\.[a-z0-9]+ = function ([a-z0-9]+) \(props\).*/gi, 'static FIconObject $1 = ');  
+    content = content.replace(/module\.exports\.[a-z0-9]+ = function ([a-z0-9]+) \(props\).*/gi, 'static const FIconObject $1 = ');  
     // FIconObject.parseJSON(el)
     content = content.replace(/GenIcon\(\{/gi, 'FIconObject.parseJSON(({');
     content = content.replace(/\]\}\)\(props\)/gi, ']}))');
