@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
 
       - name: "Build with bun"
         uses: oven-sh/setup-bun@v1
@@ -28,6 +29,5 @@ jobs:
       - name: Run tests
         run: flutter test
       
-      - uses: dart-lang/setup-dart@v1
       - name: Publish to pub.dev
-        run: dart pub publish --force
+        run: flutter pub publish --force
