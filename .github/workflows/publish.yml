@@ -18,9 +18,15 @@ jobs:
       - run: time(cd build && bun i)
       - run: time(cd build && bun start)
 
-      - uses: dart-lang/setup-dart@v1
+      - uses: flutter-actions/setup-flutter@v4
+        with:
+          channel: stable
+          version: 3.0.2
       - name: Install dart dependencies
-        run: dart pub get
+        run: flutter pub get
+      
+      - name: Run tests
+        run: flutter test
       
       - name: Publish to pub.dev
         run: dart pub publish --force
