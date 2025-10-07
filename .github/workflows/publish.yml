@@ -1,0 +1,26 @@
+name: Generate and publish to pub
+
+on:
+  push:
+    tags:
+    - 'v[0-9]+.[0-9]+.[0-9]+'
+      
+jobs:
+  build:
+    permissions:
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Build with bun"
+        uses: oven-sh/setup-bun@v1
+      - run: time(cd build && bun i)
+      - run: time(cd build && bun start)
+
+      - uses: dart-lang/setup-dart@v1
+      - name: Install dart dependencies
+        run: dart pub get
+      
+      - name: Publish to pub.dev
+        run: dart pub publish --force
