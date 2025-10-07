@@ -19,3 +19,6 @@ Therefor also created the FIcon widget, which will display the icon.
 
 ## 1.3.0
 Made all icons to const, for use constant properties.
+
+## 1.4.0
+Made default icon properties respect theme and updated the documentation

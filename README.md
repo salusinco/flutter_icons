@@ -18,7 +18,7 @@ import 'package:ultimate_flutter_icons/flutter_icons.dart';
 
 ## Usage
 
-To add an icon to your app, you simply need to import the package and the specify which icon you want to use:
+To add an icon to your app, you simply need to import the package and specify which icon you want to use, using the `FIcon` widget:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -32,7 +32,7 @@ class IconTest extends StatelessWidget {
   Widget build(Object context) {
     return Scaffold(
       body: Center(
-        child: AI.AiFillAccountBook()
+        child: FIcon(AI.AiFillAccountBook),
       ),
       backgroundColor: Colors.white,
     );
@@ -47,24 +47,24 @@ You can also change the following properties
 ### [double] size
 Changes the size of the icon. Technically it sets the width and height of the icon.
 
-It defaults to `16`.
+It defaults to `Theme.of(context).bodyMedium.fontSize` or `16`.
 
 Example:
 ```dart
-AI.AiFillAccountBook(size: 32)
+FIcon(AI.AiFillAccountBook, size: 32)
 ```
 This will make the icons dimensions 32x32.
 
 ### [Color] color
 Changes the color of the icon.
 
-It defaults to `Colors.black`
+It defaults to `Theme.of(context).bodyMedium.color` or `Colors.black`.
 
 Example:
 ```dart
-AI.AiFillAccountBook(color: Color(0xFFFF00FF))
+FIcon(AI.AiFillAccountBook, color: Color(0xFFFF00FF))
 ```
-This will make the icons color to #FF00FF (purple) and no alpha.
+This will make the icons color to #FF00FF (pink) with no alpha.
 
 ## Additional information
 

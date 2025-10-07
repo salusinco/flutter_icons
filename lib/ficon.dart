@@ -3,22 +3,24 @@ import 'package:ultimate_flutter_icons/gen_icon.dart';
 
 class FIcon extends StatelessWidget {
   final FIconObject icon;
-  final double size;
-  final Color color;
+  final double? size;
+  final Color? color;
 
   const FIcon(
     this.icon, {
-    this.size = 16,
-    this.color = Colors.black,
+    this.size,
+    this.color,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return genIcon(
       icon,
-      size: size,
-      color: color,
+      size: size ?? theme.textTheme.bodyMedium?.fontSize ?? 16,
+      color: color ?? theme.textTheme.bodyMedium?.color ?? Colors.black,
     );
   }
 }
