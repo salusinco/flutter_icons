@@ -22,3 +22,6 @@ Made all icons to const, for use constant properties.
 
 ## 1.4.0
 Made default icon properties respect theme and updated the documentation
+
+## 1.4.1
+Updated to latest react-icons pack
